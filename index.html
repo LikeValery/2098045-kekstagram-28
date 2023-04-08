@@ -35,10 +35,7 @@
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input img-upload__form visually-hidden" name="filename" required minlength="2" maxlength="25"
-              data-pristine-required-message="Обязательное поле"
-              data-pristine-minlength-message="Минимальная длина 2 символа"
-              data-pristine-maxlength-message="Максимальная длина 25 символов">
+              <input type="file" id="upload-file" class="img-upload__input img-upload__form visually-hidden" name="filename" required minlength="2" maxlength="25">
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
@@ -120,17 +117,10 @@
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
                   <div class="img-upload__field-wrapper">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" minlength="2" maxlength="25"
-                    data-pristine-required-message="Обязательное поле"
-                    data-pristine-minlength-message="Минимальная длина 2 символа"
-                    data-pristine-maxlength-message="Максимальная длина 25 символов"
-                    >
+                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" minlength="2" maxlength="25">
                   </div>
                   <div class="img-upload__field-wrapper">
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..." maxlength="140"
-                    data-pristine-required-message="Обязательное поле"
-                    data-pristine-minlength-message="Минимальная длина 2 символа"
-                    data-pristine-maxlength-message="Максимальная длина 140 символов"></textarea>
+                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..." maxlength="140"></textarea>
                   </div>
                 </fieldset>
 
