@@ -37,7 +37,6 @@ const showSuccsessMessage = () => {
 
 
 //закрытие всплывающего сообщения при клике и  нажатии кнопки esc
-// const successContainer = successMessage.querySelector('.success__inner');
 
 const successButton = successMessage.querySelector('.success__button');
 successButton.addEventListener('click', () => {

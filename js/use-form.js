@@ -12,12 +12,12 @@ const imageUploadCancel = document.querySelector('.img-upload__cancel');
 const pictureForm = document.querySelector('.img-upload__form');
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 const TAG_ERROR_TEXT = 'Ввели не правильное значение';
-const MAX_HASHTAG_COUNT = 20;
+const MAX_HASHTAG_COUNT = 5;
 
 const submitButton = document.querySelector('.img-upload__submit');
 const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...'
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...'
 };
 
 //добавляю вывод ошибок
