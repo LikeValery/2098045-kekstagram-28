@@ -1,4 +1,3 @@
-
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -24,7 +23,6 @@ function createRandomIdFromRangeGenerator (min, max) {
     return currentValue;
   };
 }
-
 const generatePhotoId = createRandomIdFromRangeGenerator(1, 25);
 const generatePictureNumber = createRandomIdFromRangeGenerator(1, 25);
 const generateCommentId = createRandomIdFromRangeGenerator(1, 25);
