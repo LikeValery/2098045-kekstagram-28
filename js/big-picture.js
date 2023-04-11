@@ -57,27 +57,33 @@ function createComments (information) {
   commentContainer.append(commentsContainerFragment);
 }
 
-//выгружаю нужное кол-во комментариев
-const renderComments = (comments) => {
-  if (comments.length <= COMMENTS_GROUP) {
-    createComments(comments);
+let comments;
+
+const loader = () => {
+  createComments(comments.slice(0, commentsLoader + COMMENTS_GROUP));
+  commentsLoader += COMMENTS_GROUP;
+  if (commentsLoader >= comments.length) {
     commentsLoader = comments.length;
+    commentsLoaderButton.classList.add('hidden');
+  }
+  commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${comments.length} комментариев</span>`;
+};
+
+//выгружаю нужное кол-во комментариев
+const renderComments = (currentComments) => {
+  comments = currentComments;
+  if (currentComments.length <= COMMENTS_GROUP) {
+    createComments(currentComments);
+    commentsLoader = currentComments.length;
     commentsLoaderButton.classList.add('hidden');
   } else {
     commentsLoaderButton.classList.remove('hidden');
-    createComments(comments.slice(0, COMMENTS_GROUP));
+    createComments(currentComments.slice(0, COMMENTS_GROUP));
     commentsLoader += COMMENTS_GROUP;
   }
-  commentsLoaderButton.addEventListener ('click', () => {
-    createComments(comments.slice(0, commentsLoader + COMMENTS_GROUP));
-    commentsLoader += COMMENTS_GROUP;
-    if (commentsLoader >= comments.length) {
-      commentsLoader = comments.length;
-      commentsLoaderButton.classList.add('hidden');
-    }
-    commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${comments.length} комментариев</span>`;
-  });
-  commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${comments.length} комментариев</span>`;
+
+  commentsLoaderButton.addEventListener ('click', loader);
+  commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${currentComments.length} комментариев</span>`;
 
 };
 
