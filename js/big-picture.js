@@ -59,6 +59,7 @@ function createComments (information) {
   commentContainer.append(commentsContainerFragment);
 }
 
+//выгружаю нужное кол-во комментариев
 const loader = () => {
   createComments(currentComments.slice(0, commentsLoader + COMMENTS_GROUP));
   commentsLoader += COMMENTS_GROUP;
@@ -69,7 +70,7 @@ const loader = () => {
   commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${currentComments.length} комментариев</span>`;
 };
 
-//выгружаю нужное кол-во комментариев
+
 const renderComments = (comments) => {
   currentComments = comments;
   if (comments.length <= COMMENTS_GROUP) {
