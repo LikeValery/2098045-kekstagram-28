@@ -30,12 +30,12 @@ document.addEventListener('keydown', (evt) => {
   }
 });
 
-function showBigPicture ({url, description, comments, likes}) {
+function showBigPicture ({url, description, comment, likes}) {
   bigPictureContainer.classList.remove('hidden');
   bigPictureImg.src = url;
   bigPictureDescription.textContent = description;
   bigPictureLikes.textContent = likes;
-  bigPictureComments.textContent = comments.length;
+  bigPictureComments.textContent = comment.length;
 }
 
 //Комментарии к большой картинке
