@@ -30,13 +30,15 @@ document.addEventListener('keydown', (evt) => {
   }
 });
 
-function showBigPicture ({url, description, comment, likes}) {
+function showBigPicture ({url, description, comments, likes}) {
   bigPictureContainer.classList.remove('hidden');
   bigPictureImg.src = url;
   bigPictureDescription.textContent = description;
   bigPictureLikes.textContent = likes;
-  bigPictureComments.textContent = comment.length;
+  bigPictureComments.textContent = comments.length;
 }
+
+let currentComments;
 
 //Комментарии к большой картинке
 function createComments (information) {
@@ -57,28 +59,26 @@ function createComments (information) {
   commentContainer.append(commentsContainerFragment);
 }
 
-let comments;
-
 const loader = () => {
-  createComments(comments.slice(0, commentsLoader + COMMENTS_GROUP));
+  createComments(currentComments.slice(0, commentsLoader + COMMENTS_GROUP));
   commentsLoader += COMMENTS_GROUP;
-  if (commentsLoader >= comments.length) {
-    commentsLoader = comments.length;
+  if (commentsLoader >= currentComments.length) {
+    commentsLoader = currentComments.length;
     commentsLoaderButton.classList.add('hidden');
   }
-  commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${comments.length} комментариев</span>`;
+  commentsCount.innerHTML = `${commentsLoader} из <span class="comments-count">${currentComments.length} комментариев</span>`;
 };
 
 //выгружаю нужное кол-во комментариев
-const renderComments = (currentComments) => {
-  comments = currentComments;
-  if (currentComments.length <= COMMENTS_GROUP) {
-    createComments(currentComments);
-    commentsLoader = currentComments.length;
+const renderComments = (comments) => {
+  currentComments = comments;
+  if (comments.length <= COMMENTS_GROUP) {
+    createComments(comments);
+    commentsLoader = comments.length;
     commentsLoaderButton.classList.add('hidden');
   } else {
     commentsLoaderButton.classList.remove('hidden');
-    createComments(currentComments.slice(0, COMMENTS_GROUP));
+    createComments(comments.slice(0, COMMENTS_GROUP));
     commentsLoader += COMMENTS_GROUP;
   }
 
